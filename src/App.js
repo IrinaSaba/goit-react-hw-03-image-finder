@@ -1,7 +1,19 @@
-import "./App.css";
+import { Component } from "react";
+import SearchBar from "./Components/Searchbar/Searchbar";
 
-function App() {
-  return <div></div>;
+export default class App extends Component {
+  state = {
+    query: "",
+  };
+
+  handleSearchSubmmit = (query) => {
+    this.setState({ query });
+  };
+  render() {
+    return (
+      <div>
+        <SearchBar onSubmit={this.handleSearchSubmmit} />
+      </div>
+    );
+  }
 }
-
-export default App;
