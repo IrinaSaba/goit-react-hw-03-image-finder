@@ -8,8 +8,10 @@ export default class SearchBar extends Component {
       query: ''
   };
 
+  
+
   handleChange = (e) => {
-    this.setState({ query: e.currentTarget.value.toLowerCase()});
+    this.setState({ query: e.target.value.toLowerCase()});
   };
 
   handleSubmit = (e) => {
@@ -22,13 +24,12 @@ export default class SearchBar extends Component {
       this.setState({query: ''});    
     };
     
-
   render() {
     return (
       <>
         <header className={s["Searchbar"]}>
           <form className={s["SearchForm"]} onSubmit={this.handleSubmit}>
-            <button type="submit" class={s["SearchForm-button"]}>
+            <button type="submit" className={s["SearchForm-button"]}>
               <span className={s["SearchForm-button-label"]}>Search</span>
             </button>
 
@@ -36,8 +37,8 @@ export default class SearchBar extends Component {
               className={s["SearchForm-input"]}
               name="query"
               type="text"
-              autocomplete="off"
-              autofocus
+              // autocomplete="off"
+              // autofocus
               placeholder="Search images and photos"
               value={this.state.query}
               onChange={this.handleChange}
