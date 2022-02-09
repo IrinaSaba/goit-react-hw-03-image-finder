@@ -13,7 +13,7 @@ export default class SearchBar extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     if(this.state.query.trim() === '') {
-      alert('Pls enter your query')
+      alert(' SERGEY Pls enter what would you like to find')
       return;
     }
     this.props.onSubmit(this.state.query)

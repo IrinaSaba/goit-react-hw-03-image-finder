@@ -20,7 +20,7 @@ export const newSearch = (q ="people", page = 1)  => {
   .then((res) => {
     // console.log(res)
     if (!res.data.hits.length) {
-      throw new Error("Wrong search, enter what you are looking for and we have it :)");
+      throw new Error("Wrong search SERGEJ try with animals :)");
     }
     // console.log(res.data.hits)
     return res.data.hits;

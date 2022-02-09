@@ -16,37 +16,57 @@ class App extends Component {
     isLoading: false,
     error: null,
   };
-  componentDidMount() {
-    newSearch()
-      .then((newFetch) => this.setState({ newFetch }))
-      .catch((error) => this.setState({ error: error.message }));
-  }
+  // componentDidMount() {
+  //   newSearch()
+  //     .then((newFetch) => this.setState({ newFetch }))
+  //     .catch((error) => this.setState({ error: error.message }));
+  // }
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.query !== this.state.query && this.state.query) {
-      this.setState({ isLoading: true, error: null });
-      // console.log(newSearch(this.state.query));
-      newSearch(this.state.query)
-        .then((newFetch) => this.setState({ newFetch }))
-        .catch((error) => this.setState({ error: error.message }))
-        .finally(() => this.setState({ isLoading: false }));
-    }
+    // if (prevState.query !== this.state.query && this.state.query) {
+    //   this.setState({ isLoading: true, error: null });
+    //   // console.log(newSearch(this.state.query));
+    //   newSearch(this.state.query)
+    //     .then((newFetch) => this.setState({ newFetch }))
+    //     .catch((error) => this.setState({ error: error.message }))
+    //     .finally(() => this.setState({ isLoading: false }));
+    // }
+    // if (
+    //   prevState.page !== this.state.page &&
+    //   this.state.page !== 1 &&
+    //   this.state.query !== ""
+    // ) {
+    //   this.setState({ isLoading: true });
+    //   // console.log(this.state.query);
+    //   newSearch(this.state.query, this.state.page)
+    //     .then((newFetch) =>
+    //       this.setState((prev) => ({
+    //         newFetch: [...prev.newFetch, ...newFetch],
+    //       }))
+    //     )
+    //     .catch((error) => this.setState({ error: error.message }))
+    //     .finally(() => this.setState({ isLoading: false }));
+    // }
+
     if (
-      prevState.page !== this.state.page &&
-      this.state.page !== 1 &&
-      this.state.query !== ""
+      prevState.query !== this.state.query || // search - static, page === 1 false
+      prevState.page !== this.state.page //
     ) {
-      this.setState({ isLoading: true });
-      // console.log(this.state.query);
-      newSearch(this.state.query, this.state.page)
-        .then((newFetch) =>
-          this.setState((prev) => ({
-            newFetch: [...prev.newFetch, ...newFetch],
-          }))
-        )
-        .catch((error) => this.setState({ error: error.message }))
-        .finally(() => this.setState({ isLoading: false }));
+      // if (!this.state.search) return;
+      this.setNewFetch();
     }
   }
+  setNewFetch = () => {
+    this.setState({ isLoading: true, error: null });
+    newSearch(this.state.query, this.state.page)
+      .then((newFetch) =>
+        this.setState((prev) => ({
+          // news: this.state.page === 1 ? news : [...prev.news, ...news],
+          newFetch: [...prev.newFetch, ...newFetch],
+        }))
+      )
+      .catch((error) => this.setState({ error: error.message }))
+      .finally(() => this.setState({ isLoading: false }));
+  };
 
   handleSearchSubmmit = (query) => {
     this.setState({ query, page: 1, newFetch: [] });

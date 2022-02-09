@@ -9,11 +9,11 @@ class ImageGallery extends Component {
     const { newFetch } = this.props;
     return (
       <SRLWrapper >
-       <ul className={s["ImageGallery"]}>
-          {newFetch.map(({ webformatURL,id, tags }) => (
-            <ImageGalleryItem webformatURL={webformatURL} key={id} tags={tags} />
-          ))}
-       </ul>
+        <ul className={s["ImageGallery"]}>
+            {newFetch.map(({ webformatURL,id, tags }) => (
+              <ImageGalleryItem webformatURL={webformatURL} key={id} tags={tags} />
+            ))}
+        </ul>
       </SRLWrapper> 
     );
   }
