@@ -18,11 +18,11 @@ export const newSearch = (q ="people", page = 1)  => {
   return axios
   .get("api/")
   .then((res) => {
-    console.log(res)
+    // console.log(res)
     if (!res.data.hits.length) {
-      throw new Error("Not found");
+      throw new Error("Wrong search, enter what you are looking for and we have it :)");
     }
-    console.log(res.data.hits)
+    // console.log(res.data.hits)
     return res.data.hits;
   })
   .catch((err) => {
