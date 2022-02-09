@@ -1,14 +1,10 @@
 import { Component } from "react";
 import s from './SearchBar.module.css'
 
-
-
 export default class SearchBar extends Component {
   state = {
       query: ''
   };
-
-  
 
   handleChange = (e) => {
     this.setState({ query: e.target.value.toLowerCase()});

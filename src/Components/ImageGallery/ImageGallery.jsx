@@ -9,8 +9,8 @@ class ImageGallery extends Component {
     return (
       <>
        <ul className={s["ImageGallery"]}>
-          {newFetch.map(({ webformatURL, id, tags }) => (
-            <ImageGalleryItem webformatURL={webformatURL} id={id} tags={tags} />
+          {newFetch.map(({ webformatURL,id, tags }) => (
+            <ImageGalleryItem webformatURL={webformatURL} key={id} tags={tags} />
           ))}
        </ul>
       </>     

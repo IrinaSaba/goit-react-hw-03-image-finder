@@ -3,7 +3,7 @@ import s from './ImageGalleryItem.module.css'
 
 const ImageGalleryItem = ({webformatURL, id, tags}) => {
    return (
-            <li className={s["ImageGalleryItem"]} id={id}>
+            <li className={s["ImageGalleryItem"]} key={id}>
                <img  className={s["ImageGalleryItem-image"]} src={webformatURL} alt={tags} />
             </li>
    );

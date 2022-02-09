@@ -4,7 +4,7 @@ import ImageGallery from "./Components/ImageGallery/ImageGallery";
 import SearchBar from "./Components/Searchbar/Searchbar";
 import { newSearch } from "./utils/newSearch";
 
-export default class App extends Component {
+class App extends Component {
   state = {
     query: "",
     newFetch: [],
@@ -18,7 +18,7 @@ export default class App extends Component {
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.query !== this.state.query && this.state.query) {
-      // console.log(this.state.query);
+      console.log(newSearch(this.state.query));
       newSearch(this.state.query)
         .then((newFetch) => this.setState({ newFetch }))
 
@@ -38,7 +38,7 @@ export default class App extends Component {
   }
 
   handleSearchSubmmit = (query) => {
-    this.setState({ query });
+    this.setState({ query, page: 1 });
   };
   handlerLoadMore = () => {
     this.setState((prev) => ({ page: prev.page + 1 }));
@@ -56,3 +56,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default App;

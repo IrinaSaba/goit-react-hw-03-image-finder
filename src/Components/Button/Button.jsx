@@ -1,4 +1,4 @@
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import s from './Button.module.css'
 
 const Button = ({handleLoadMore}) => {
@@ -12,10 +12,8 @@ const Button = ({handleLoadMore}) => {
  };
  
 
-//  ImageGalleryItem.propTypes = {
-//    webformatURL: PropTypes.string,
-//    id: PropTypes.number,
-//    tags: PropTypes.string,
-//  };
+ Button.propTypes = {
+   handleLoadMore: PropTypes.func,
+ };
 
  export default Button;
