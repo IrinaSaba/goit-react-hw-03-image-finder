@@ -6,6 +6,7 @@ import { newSearch } from "./utils/newSearch";
 import { Hearts } from "react-loader-spinner";
 import s from "./Components/Hearts/Hearts.module.css";
 import st from "./Components/Error/error.module.css";
+import SimpleReactLightbox from "simple-react-lightbox";
 
 class App extends Component {
   state = {
@@ -58,7 +59,7 @@ class App extends Component {
     const { newFetch, isLoading, query, error } = this.state;
     // console.log(this.state.newFetch);
     return (
-      <div>
+      <SimpleReactLightbox>
         <SearchBar onSubmit={this.handleSearchSubmmit} />
         {error ? (
           <p className={st["error"]}>{error}</p>
@@ -83,7 +84,7 @@ class App extends Component {
             )}
           </>
         )}
-      </div>
+      </SimpleReactLightbox>
     );
   }
 }
